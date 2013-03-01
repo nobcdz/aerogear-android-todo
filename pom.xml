@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.jboss.aerogear</groupId>
     <artifactId>android-todos</artifactId>
-    <version>1.0.0.M1</version>
+    <version>1.0.0.CR1-SNAPSHOT</version>
     <packaging>apk</packaging>
     <name>Android TODOs</name>
 
@@ -56,7 +56,7 @@
             <groupId>org.jboss.aerogear</groupId>
             <artifactId>aerogear-android</artifactId>
 	    <type>apklib</type>
-            <version>1.0.0.M1</version>
+            <version>1.0.0.M2</version>
         </dependency>
 
         <!-- Make sure this is below the android dependencies -->
