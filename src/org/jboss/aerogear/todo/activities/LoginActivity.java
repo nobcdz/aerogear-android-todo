@@ -45,7 +45,7 @@ public class LoginActivity extends Activity {
 		String username = text(R.id.username_field);
 		String password = text(R.id.password_field);
 		ToDoApplication app = (ToDoApplication) getApplication();
-		app.login(username, password, new Callback<HeaderAndBody>() {
+		app.login(this, username, password, new Callback<HeaderAndBody>() {
 
 			@Override
 			public void onSuccess(HeaderAndBody data) {

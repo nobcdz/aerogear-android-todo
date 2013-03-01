@@ -95,7 +95,7 @@ public class TodoActivity extends SherlockFragmentActivity {
 				break;
 			case R.id.menu_logout :
 				((ToDoApplication) getApplication())
-						.logout(new Callback<Void>() {
+						.logout(this, new Callback<Void>() {
 
 							@Override
 							public void onSuccess(Void data) {

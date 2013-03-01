@@ -104,7 +104,7 @@ public class TaskFormFragment extends Fragment {
 				task.setDescription(description.getText().toString());
 
 				Pipe<Task> pipe = ((ToDoApplication) getActivity()
-						.getApplication()).getPipeline().get("tasks");
+						.getApplication()).getPipeline().get("tasks", TaskFormFragment.this, getActivity().getApplicationContext());
 				pipe.save(task, new Callback<Task>() {
 					@Override
 					public void onSuccess(Task data) {

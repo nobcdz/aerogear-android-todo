@@ -54,7 +54,7 @@ public class RegisterActivity extends SherlockActivity {
 			String role = ((Spinner) findViewById(R.id.role_spinner))
 					.getSelectedItem().toString();
 
-			((ToDoApplication) getApplication()).enroll(firstName, lastName,
+			((ToDoApplication) getApplication()).enroll(this, firstName, lastName,
 					emailAddress, username, password, role,
 					new Callback<HeaderAndBody>() {
 

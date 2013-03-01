@@ -77,7 +77,7 @@ public class TagFormFragment extends Fragment {
 				tag.setTitle(name.getText().toString());
 
 				Pipe<Tag> pipe = ((ToDoApplication) getActivity()
-						.getApplication()).getPipeline().get("tags");
+						.getApplication()).getPipeline().get("tags", TagFormFragment.this, getActivity().getApplicationContext());
 				pipe.save(tag, new Callback<Tag>() {
 					@Override
 					public void onSuccess(Tag data) {

@@ -107,7 +107,7 @@ public class TaskListFragment extends SherlockFragment {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		pipe = ((ToDoApplication) getActivity().getApplication()).getPipeline()
-				.get("tasks");
+				.get("tasks", this, getActivity().getApplicationContext());
 	}
 
 	@Override

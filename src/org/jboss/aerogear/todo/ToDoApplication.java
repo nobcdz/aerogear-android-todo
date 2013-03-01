@@ -32,12 +32,13 @@ import org.jboss.aerogear.todo.data.Project;
 import org.jboss.aerogear.todo.data.Tag;
 import org.jboss.aerogear.todo.data.Task;
 
+import android.app.Activity;
 import android.app.Application;
 
 public class ToDoApplication extends Application {
 	private Pipeline pipeline;
+	private Authenticator auth;
 
-	private AuthenticationModule authModule;
 
 	@Override
 	public void onCreate() {
@@ -47,13 +48,13 @@ public class ToDoApplication extends Application {
 		try {
 			URL baseURL = new URL(
 					"http://todoauth-aerogear.rhcloud.com/todo-server");
-			Authenticator auth = new Authenticator(baseURL);
+			auth = new Authenticator(baseURL);
 			AuthenticationConfig config = new AuthenticationConfig();
 			config.setEnrollEndpoint("/auth/register");
 
-			authModule = auth.auth("login", config);
+			AuthenticationModule authModule = auth.auth("login", config);
 
-			// Set up Pipelinejoh
+			// Set up Pipeline
 			pipeline = new Pipeline(baseURL);
 
 			PipeConfig pipeConfigTask = new PipeConfig(baseURL, Task.class);
@@ -84,17 +85,17 @@ public class ToDoApplication extends Application {
 		return pipeline;
 	}
 
-	public void login(String username, String password,
+	public void login(Activity activity, String username, String password,
 			Callback<HeaderAndBody> callback) {
-		authModule.login(username, password, callback);
+		auth.get("login", activity).login(username, password, callback);
 
 	}
 
-	public void logout(Callback<Void> callback) {
-		authModule.logout(callback);
+	public void logout(Activity activity, Callback<Void> callback) {
+		auth.get("login", activity).logout(callback);
 	}
 
-	public void enroll(String firstName, String lastName, String emailAddress,
+	public void enroll(Activity activity, String firstName, String lastName, String emailAddress,
 			String username, String password, String role,
 			Callback<HeaderAndBody> callback) {
 
@@ -106,7 +107,7 @@ public class ToDoApplication extends Application {
 		userData.put("password", password);
 		userData.put("role", role);
 
-		authModule.enroll(userData, callback);
+		auth.get("login", activity).enroll(userData, callback);
 	}
 
 }

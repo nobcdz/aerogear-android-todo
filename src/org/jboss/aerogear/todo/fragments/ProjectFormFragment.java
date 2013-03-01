@@ -77,7 +77,7 @@ public class ProjectFormFragment extends Fragment {
 				project.setTitle(name.getText().toString());
 
 				Pipe<Project> pipe = ((ToDoApplication) getActivity()
-						.getApplication()).getPipeline().get("projects");
+						.getApplication()).getPipeline().get("projects", ProjectFormFragment.this, getActivity().getApplicationContext());
 				pipe.save(project, new Callback<Project>() {
 					@Override
 					public void onSuccess(Project data) {
